@@ -74,7 +74,7 @@ server.use(errorController.getError)
 sequelize.sync().then((result)=>{
 	console.log(result)
 
-	const port = 3005
+	const port = process.env.PORT
 
 	server.listen(port, function(){
 		console.log(`Server running at port ${port}`)

@@ -3,7 +3,7 @@ const session = require("express-session")
 const SequelizeStore = require("connect-session-sequelize")(session.Store)
 require("dotenv").config("../.env")
 
-const sequelize = new Sequelize('ecommerce-sequelize', 'root', 'Root@123', {dialect: 'mysql', host: 'localhost', logging: false})
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {dialect: 'mysql', host: process.env.DB_HOST, logging: false})
 
 const sessionStore = new SequelizeStore({
 	db: sequelize,
