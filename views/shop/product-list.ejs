@@ -1,0 +1,33 @@
+<%- include("../partials/header.ejs") %>
+
+    <main>
+		<h1>My Products</h1>
+        <p>List of all the products...</p>
+		<div class="grid">
+			<% products.forEach(function(x){ %>
+				<div>
+					<h2><%= x.title %></h2>
+				<img width="200px" src="<%= x.imageURL %>" alt="<%= x.title %>">
+				<p><strong>Price: </strong><%= x.price %> GBP</p>
+				<p><strong>Description: </strong> <%= x.description %></p>
+				<button><a href="/product/<%= x.id %>">Details</a></button>
+				<!-- <form action="/show-product" method="POST">
+					<input type="hidden" value="<%=x.id%>" name="id">
+					<button>Details</button>
+				</form> -->
+				<form action="/add-to-cart" method="POST">
+					<input type="hidden" value="<%= x.id %>" name="productId">
+					<input type="hidden" value="<%= x.price %>" name="productPrice">
+					<button>Add to Cart</button>
+				</form>
+				<hr>
+				</div>
+			<% }) %>
+		</div>
+    </main>
+
+<%- include("../partials/footer.ejs") %>
+
+<!-- <% %> => Exceute JS code in ejs
+<%= %> => Embedding data in ejs
+<%- %> => Embedding template in ejs -->

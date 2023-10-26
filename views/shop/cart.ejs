@@ -1,0 +1,28 @@
+<%- include("../partials/header.ejs") %>
+
+<main>
+	<h1>Your Cart</h1>
+	<ul>
+		<%cart.forEach(function(product){%>
+			<li>
+				<h2><%=product.title%></h2>
+				<p><%=product.price%> GBP</p>
+				<p><%=product.quantity%></p>
+				<form action="/delete-product" method="POST">
+					<input type="hidden" name="price" value="<%=product.price%>">
+					<input type="hidden" name="qty" value="<%=product.quantity%>">
+					<input type="hidden" name="id" value="<%=product.id%>">
+					<button>Delete</button>
+				</form>
+				
+			</li>
+		<%})%>
+		
+	</ul>
+	<p>
+		Total Price: <%=cart.totalPrice%> GBP
+	</p>
+</main>
+
+
+<%- include("../partials/footer.ejs") %>

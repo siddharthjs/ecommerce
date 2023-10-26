@@ -1,0 +1,25 @@
+<%- include("../partials/header.ejs") %>
+
+    <main>
+		<div class="grid">
+				<div>
+					<h2><%= product.title %></h2>
+				<img width="200px" src="<%= product.imageURL %>" alt="<%= product.title %>">
+				<p><strong>Price: </strong><%= product.price %> GBP</p>
+				<p><strong>Description: </strong> <%= product.description %></p>
+				<form action="/add-to-cart" method="POST">
+					<input type="hidden" value="<%= product.id %>" name="productId">
+					<input type="hidden" value="<%= product.price %>" name="productPrice">
+					<button>Add to Cart</button>
+				</form>
+				
+				<hr>
+				</div>
+		</div>
+    </main>
+
+<%- include("../partials/footer.ejs") %>
+
+<!-- <% %> => Exceute JS code in ejs
+<%= %> => Embedding data in ejs
+<%- %> => Embedding template in ejs -->

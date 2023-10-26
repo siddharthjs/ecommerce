@@ -1,0 +1,31 @@
+<%- include("../partials/header.ejs") %>
+
+<h1>Sign in</h1>
+
+<% if (messages && messages.error && messages.error.length > 0) { %>
+    <div class="alert alert-danger">
+        <% messages.error.forEach(function(message) { %>
+            <p><%= message %></p>
+        <% }) %>
+    </div>
+<% } %>
+
+<% if (messages && messages.success && messages.success.length > 0) { %>
+    <div class="alert alert-success">
+        <% messages.success.forEach(function(message) { %>
+            <p><%= message %></p>
+        <% }) %>
+    </div>
+<% } %>
+
+<form action="/auth/signin" method="POST">
+<label for="email">Email: </label>
+<input type="email" id="email" name="email" required>
+
+<label for="password">Password: </label>
+<input type="password" id="password" name="password" required>
+
+<button>Sign in</button>
+</form>
+
+<%- include("../partials/footer.ejs") %>
